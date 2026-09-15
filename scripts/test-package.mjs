@@ -34,7 +34,7 @@ try {
     [
       'pack',
       '--workspace',
-      '@bordercut/core',
+      'bordercut',
       '--pack-destination',
       temporaryRoot,
       '--json',
@@ -76,10 +76,10 @@ try {
 
   const smokeSource = `
 import assert from 'node:assert/strict';
-import { ALGORITHM_VERSION, DEFAULT_OPTIONS, removeBackground } from '@bordercut/core';
-import { decodeImageBlob, encodePngBlob, removeBackgroundFromBlob } from '@bordercut/core/browser';
-import { removeBackground as standaloneRemoveBackground } from './node_modules/@bordercut/core/dist/core.min.js';
-import { removeBackgroundFromBlob as standaloneFromBlob } from './node_modules/@bordercut/core/dist/browser.min.js';
+import { ALGORITHM_VERSION, DEFAULT_OPTIONS, removeBackground } from 'bordercut';
+import { decodeImageBlob, encodePngBlob, removeBackgroundFromBlob } from 'bordercut/browser';
+import { removeBackground as standaloneRemoveBackground } from './node_modules/bordercut/dist/core.min.js';
+import { removeBackgroundFromBlob as standaloneFromBlob } from './node_modules/bordercut/dist/browser.min.js';
 
 assert.equal(ALGORITHM_VERSION, 1);
 assert.equal(DEFAULT_OPTIONS.tolerance, 46);
@@ -111,8 +111,8 @@ assert.equal(guided.alpha[width + 1], 255);
   await writeFile(join(consumerRoot, 'smoke.mjs'), smokeSource);
   await writeFile(
     join(consumerRoot, 'smoke.ts'),
-    `import { removeBackground, type BrushStroke, type PixelImage } from '@bordercut/core';\n` +
-      `import { removeBackgroundFromBlob, type BrowserRemovalResult } from '@bordercut/core/browser';\n` +
+    `import { removeBackground, type BrushStroke, type PixelImage } from 'bordercut';\n` +
+      `import { removeBackgroundFromBlob, type BrowserRemovalResult } from 'bordercut/browser';\n` +
       `const image: PixelImage = { width: 1, height: 1, data: new Uint8ClampedArray(4) };\n` +
       `const stroke: BrushStroke = { kind: 'background', radius: 1, points: [{ x: 0, y: 0 }] };\n` +
       `removeBackground(image, {}, { strokes: [stroke] }).alpha satisfies Uint8ClampedArray;\n` +

@@ -1,4 +1,4 @@
-# @bordercut/core
+# bordercut
 
 **Local background removal in about 8 kB minified + gzipped. Zero runtime dependencies.**
 
@@ -27,10 +27,8 @@ Run `npm run size` from the source repository to check the 8,000-byte core and
 
 ## Installation
 
-Once the package is published by a maintainer:
-
 ```bash
-npm install @bordercut/core
+npm install bordercut
 ```
 
 For repository development, use `npm ci` at the workspace root.
@@ -48,14 +46,14 @@ const { blob } = await removeBackgroundFromBlob(file);
 
 The file is self-contained. Use `dist/core.min.js` and its `removeBackground`
 export when you already have RGBA pixels. Both modules can be served by your
-application and cached for offline use. While the package is unpublished, build
-them with `npm run build --workspace @bordercut/core` at the repository root;
-they are written to `packages/typescript/dist/`.
+application and cached for offline use. For repository development, build them
+with `npm run build --workspace bordercut` at the repository root; they are
+written to `packages/typescript/dist/`.
 
 ## Usage
 
 ```ts
-import { removeBackground } from '@bordercut/core';
+import { removeBackground } from 'bordercut';
 
 const result = removeBackground(
   { width, height, data: rgba },
@@ -94,7 +92,7 @@ const result = removeBackground(
 Applications that do not already have decoded pixels can use the optional browser entry point:
 
 ```ts
-import { removeBackgroundFromBlob } from '@bordercut/core/browser';
+import { removeBackgroundFromBlob } from 'bordercut/browser';
 
 const result = await removeBackgroundFromBlob(file, { feather: 2 });
 const transparentPng: Blob = result.blob;
@@ -102,7 +100,7 @@ const transparentPng: Blob = result.blob;
 
 The browser adapter accepts a `Blob` or `File`, decodes it with browser canvas APIs, invokes the same deterministic core, and returns the complete result plus an encoded transparent PNG. It also exports `decodeImageBlob` and `encodePngBlob` for applications that need the individual steps.
 
-Importing `@bordercut/core` does not include the adapter. The raw core remains free of codecs and browser globals. For responsive interfaces, call the core or browser adapter inside a Web Worker; see `examples/minimal-web/src/removal-worker.ts`.
+Importing `bordercut` does not include the adapter. The raw core remains free of codecs and browser globals. For responsive interfaces, call the core or browser adapter inside a Web Worker; see `examples/minimal-web/src/removal-worker.ts`.
 
 ### Node file example
 
@@ -150,7 +148,7 @@ Partial option objects are accepted; omitted values use the defaults exported as
 - `ALGORITHM_VERSION`
 - `PixelImage`, `RemovalOptions`, `RemovalResult`, `RemovalDiagnostics`, `RemovalGuidance`, `RemovalGuidanceInput`, `SamplePoint`, `BrushStroke`, `StrokePoint`, `SampleKind`, and `BackgroundColor` types
 
-The `@bordercut/core/browser` subpath exports `removeBackgroundFromBlob`, `decodeImageBlob`, `encodePngBlob`, and the `BrowserRemovalResult` type.
+The `bordercut/browser` subpath exports `removeBackgroundFromBlob`, `decodeImageBlob`, `encodePngBlob`, and the `BrowserRemovalResult` type.
 
 The npm tarball includes TypeScript sources so its JavaScript and declaration source maps resolve correctly, along with the standalone minified browser modules. The portable specification and cross-language fixtures live in the [source repository](https://github.com/kong75/bordercut).
 

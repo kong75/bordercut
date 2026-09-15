@@ -1,7 +1,7 @@
 import { parse, join } from 'node:path';
 import process from 'node:process';
 import sharp from 'sharp';
-import { removeBackground } from '@bordercut/core';
+import { removeBackground } from 'bordercut';
 
 const [inputPath, requestedOutputPath] = process.argv.slice(2);
 

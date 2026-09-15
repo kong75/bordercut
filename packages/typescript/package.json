@@ -1,5 +1,5 @@
 {
-  "name": "@bordercut/core",
+  "name": "bordercut",
   "version": "0.2.0",
   "type": "module",
   "description": "Tiny, dependency-free background removal. Runs locally in browsers, Web Workers, and Node.js without model downloads.",

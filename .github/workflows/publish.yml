@@ -1,4 +1,4 @@
-name: Publish @bordercut/core
+name: Publish bordercut
 
 on:
   release:
@@ -44,4 +44,4 @@ jobs:
           TAG: ${{ github.event.release.tag_name }}
 
       - name: Publish with provenance
-        run: npm publish --workspace @bordercut/core --access public --provenance
+        run: npm publish --workspace bordercut --access public --provenance

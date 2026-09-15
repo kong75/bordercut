@@ -27,7 +27,7 @@ assert(
 
 for (const [manifestName, manifest] of [
   ['workspace', workspace],
-  ['@bordercut/core', core],
+  ['bordercut', core],
 ]) {
   const repositoryUrl = validateUrl(manifest.repository?.url, `${manifestName} repository.url`);
   const homepageUrl = validateUrl(manifest.homepage, `${manifestName} homepage`);
@@ -40,4 +40,4 @@ assert.deepEqual(core.repository, workspace.repository, 'Repository metadata mus
 assert.equal(core.homepage, workspace.homepage, 'Homepage metadata must match.');
 assert.deepEqual(core.bugs, workspace.bugs, 'Bug metadata must match.');
 
-process.stdout.write(`Release metadata is complete for @bordercut/core@${core.version}.\n`);
+process.stdout.write(`Release metadata is complete for bordercut@${core.version}.\n`);

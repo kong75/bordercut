@@ -33,7 +33,7 @@ round translucent color channels; RGB values beneath fully transparent pixels
 are not preserved.
 
 The isolate helpers target native Flutter applications. Flutter web does not
-support `Isolate.run`; web integrations can use `@bordercut/core/browser`.
+support `Isolate.run`; web integrations can use `bordercut/browser`.
 
 This adapter is intentionally separate from the pure Dart package so command
 line and server applications never take a Flutter dependency.

@@ -3,7 +3,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { cpus, release } from 'node:os';
 import { resolve } from 'node:path';
 import { performance } from 'node:perf_hooks';
-import { ALGORITHM_VERSION, DEFAULT_OPTIONS, removeBackground } from '@bordercut/core';
+import { ALGORITHM_VERSION, DEFAULT_OPTIONS, removeBackground } from 'bordercut';
 import { cases, loadPixels, root, showcaseRoot, updateReadme } from './showcase-utils.mjs';
 
 const warmups = 5;

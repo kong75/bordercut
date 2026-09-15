@@ -10,8 +10,12 @@ Use it for product shots, graphics, and other images whose subjects are distingu
 
 ## Run locally in your app
 
+```bash
+npm install bordercut
+```
+
 ```ts
-import { removeBackground } from '@bordercut/core';
+import { removeBackground } from 'bordercut';
 
 const { image, alpha } = removeBackground({ width, height, data: rgba });
 ```
@@ -19,12 +23,12 @@ const { image, alpha } = removeBackground({ width, height, data: rgba });
 In a browser, pass a local `File` or `Blob` directly to the optional adapter:
 
 ```ts
-import { removeBackgroundFromBlob } from '@bordercut/core/browser';
+import { removeBackgroundFromBlob } from 'bordercut/browser';
 
 const { blob } = await removeBackgroundFromBlob(file); // Transparent PNG, processed locally.
 ```
 
-For a site without a bundler, build the package with `npm ci && npm run build --workspace @bordercut/core`, copy `packages/typescript/dist/browser.min.js` into your site, and import it from a module script:
+For a site without a bundler, build the package with `npm ci && npm run build --workspace bordercut`, copy `packages/typescript/dist/browser.min.js` into your site, and import it from a module script:
 
 ```js
 import { removeBackgroundFromBlob } from './browser.min.js';
@@ -32,7 +36,7 @@ import { removeBackgroundFromBlob } from './browser.min.js';
 
 That file is a standalone ES module with no additional imports. Use `core.min.js` instead when you already have decoded RGBA pixels. Both files also ship in the npm tarball. Serve them with your own application; no CDN or hosted processing service is required. For responsive interfaces, run processing in a [Web Worker](examples/minimal-web/src/removal-worker.ts).
 
-Packages are not published yet; clone this repository and use the [working examples](#supported-runtimes) to get started. The project is **pre-1.0 alpha software**, MIT licensed, with a versioned algorithm contract. Package APIs may change between minor releases.
+The TypeScript package is distributed through npm. Dart and Flutter registry releases are managed separately. The project is **pre-1.0 alpha software**, MIT licensed, with a versioned algorithm contract. Package APIs may change between minor releases.
 
 ## Small enough to embed
 
@@ -110,7 +114,7 @@ bordercut/
   spec/                    Language-neutral algorithm and schemas
   fixtures/v1/             Shared cross-language conformance cases
   packages/
-    typescript/            Publishable @bordercut/core package
+    typescript/            Publishable bordercut package
     dart/                  Pure-Dart algorithm-v1 package
     flutter/               Flutter codecs and isolate adapter
   examples/
@@ -146,7 +150,7 @@ flutter test packages/flutter
 ## TypeScript API
 
 ```ts
-import { removeBackground } from '@bordercut/core';
+import { removeBackground } from 'bordercut';
 
 const result = removeBackground(
   { width, height, data: rgba },
@@ -177,10 +181,10 @@ const result = removeBackground(
 
 The package has no runtime dependencies. The default core entry does not decode or encode image files.
 
-For a one-call browser workflow, the optional `@bordercut/core/browser` subpath accepts a `Blob` or `File` and returns the complete result plus a transparent PNG `Blob`:
+For a one-call browser workflow, the optional `bordercut/browser` subpath accepts a `Blob` or `File` and returns the complete result plus a transparent PNG `Blob`:
 
 ```ts
-import { removeBackgroundFromBlob } from '@bordercut/core/browser';
+import { removeBackgroundFromBlob } from 'bordercut/browser';
 
 const { blob, diagnostics } = await removeBackgroundFromBlob(file);
 ```

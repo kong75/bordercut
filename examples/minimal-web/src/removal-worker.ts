@@ -1,5 +1,5 @@
-import { removeBackground } from '@bordercut/core';
-import type { BrushStroke, PixelImage, RemovalResult } from '@bordercut/core';
+import { removeBackground } from 'bordercut';
+import type { BrushStroke, PixelImage, RemovalResult } from 'bordercut';
 
 interface WorkerRequest {
   image: PixelImage;
