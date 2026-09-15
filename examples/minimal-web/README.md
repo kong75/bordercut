@@ -1,6 +1,6 @@
 # Minimal web example
 
-This is an intentionally unbranded integration example for `@bordercut/core`. It demonstrates browser-side image decoding, transferable RGBA processing in a Web Worker, smart Remove/Keep correction strokes, and PNG export without sharing the separate product UI.
+This is an intentionally unbranded integration example for `bordercut`. It demonstrates browser-side image decoding, transferable RGBA processing in a Web Worker, smart Remove/Keep correction strokes, and PNG export without sharing the separate product UI.
 
 From the repository root:
 

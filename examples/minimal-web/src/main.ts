@@ -5,7 +5,7 @@ import type {
   RemovalResult,
   SampleKind,
   StrokePoint,
-} from '@bordercut/core';
+} from 'bordercut';
 
 type WorkerResponse =
   | { ok: true; result: RemovalResult }

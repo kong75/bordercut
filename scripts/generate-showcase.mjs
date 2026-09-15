@@ -1,7 +1,7 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import sharp from 'sharp';
-import { removeBackground } from '@bordercut/core';
+import { removeBackground } from 'bordercut';
 import { cases, loadPixels, showcaseRoot, updateReadme } from './showcase-utils.mjs';
 
 const outputRoot = resolve(showcaseRoot, 'generated');

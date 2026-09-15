@@ -1,5 +1,5 @@
 {
-  "name": "bordercut",
+  "name": "bordercut-workspace",
   "version": "0.2.0",
   "private": true,
   "type": "module",
@@ -26,20 +26,20 @@
     "node": ">=20.19"
   },
   "scripts": {
-    "size": "npm run build --workspace @bordercut/core && node scripts/check-size.mjs",
-    "docs:size": "npm run build --workspace @bordercut/core && node scripts/check-size.mjs --write",
+    "size": "npm run build --workspace bordercut && node scripts/check-size.mjs",
+    "docs:size": "npm run build --workspace bordercut && node scripts/check-size.mjs --write",
     "check:size": "node scripts/check-size.mjs",
-    "docs:showcase": "npm run build --workspace @bordercut/core && node scripts/generate-showcase.mjs",
-    "benchmark": "npm run build --workspace @bordercut/core && node scripts/benchmark.mjs",
-    "dev": "npm run build --workspace @bordercut/core && npm run dev --workspace @bordercut/minimal-web-example",
-    "build": "npm run build --workspace @bordercut/core && npm run build --workspace @bordercut/minimal-web-example && npm run build --workspace @bordercut/node-sharp-example",
-    "typecheck": "npm run build --workspace @bordercut/core && npm run typecheck --workspace @bordercut/core && npm run typecheck --workspace @bordercut/minimal-web-example && npm run typecheck --workspace @bordercut/node-sharp-example",
-    "test": "npm run test --workspace @bordercut/core",
-    "test:watch": "npm run test:watch --workspace @bordercut/core",
+    "docs:showcase": "npm run build --workspace bordercut && node scripts/generate-showcase.mjs",
+    "benchmark": "npm run build --workspace bordercut && node scripts/benchmark.mjs",
+    "dev": "npm run build --workspace bordercut && npm run dev --workspace @bordercut/minimal-web-example",
+    "build": "npm run build --workspace bordercut && npm run build --workspace @bordercut/minimal-web-example && npm run build --workspace @bordercut/node-sharp-example",
+    "typecheck": "npm run build --workspace bordercut && npm run typecheck --workspace bordercut && npm run typecheck --workspace @bordercut/minimal-web-example && npm run typecheck --workspace @bordercut/node-sharp-example",
+    "test": "npm run test --workspace bordercut",
+    "test:watch": "npm run test:watch --workspace bordercut",
     "test:pack": "node scripts/test-package.mjs",
     "test:examples": "node scripts/test-node-example.mjs",
     "check": "npm run typecheck && npm test && npm run build && npm run check:size && npm run test:examples && npm run test:pack",
-    "pack:core": "npm pack --workspace @bordercut/core",
+    "pack:core": "npm pack --workspace bordercut",
     "check:release": "node scripts/check-release-metadata.mjs"
   },
   "devDependencies": {
